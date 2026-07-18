@@ -41,24 +41,6 @@ This repository is a collection of my LeetCode solutions written in **Java**. I 
 * Bit Manipulation
 * Math
 
-## 📂 Repository Structure
-
-```text
-LeetCode-DSA/
-│
-├── Arrays/
-├── Strings/
-├── Hashing/
-├── Two Pointers/
-├── Linked List/
-├── Stack/
-├── Queue/
-├── Binary Search/
-├── Trees/
-├── Graphs/
-├── Dynamic Programming/
-└── README.md
-```
 
 ## 📖 Solution Format
 
@@ -77,12 +59,7 @@ Each solution typically includes:
 * ✔️ Learning optimized approaches
 * ✔️ Practicing interview-style questions
 
-## 🏆 Platforms
 
-* LeetCode
-* GeeksforGeeks
-* Coding Ninjas
-* HackerRank
 
 ## 🤝 Contributions
 

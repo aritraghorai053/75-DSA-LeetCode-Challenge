@@ -1,1 +1,1 @@
-# 75-Days-LeetCode-Challenge
+# 75-DSA-LeetCode-Challenge

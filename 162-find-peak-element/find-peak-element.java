@@ -1,25 +1,10 @@
 class Solution {
-    // Function to find a peak element using binary search
     public int findPeakElement(int[] nums) {
-        // Set left and right bounds
-        int low = 0, high = nums.length - 1;
-
-        // Binary search loop
-        while (low < high) {
-            // Find mid point
-            int mid = (low + high) / 2;
-
-            // If mid element is greater than next
-            if (nums[mid] > nums[mid + 1]) {
-                // Move to left half
-                high = mid;
-            } else {
-                // Move to right half
-                low = mid + 1;
-            }
+        int n = nums.length;
+        for(int i = 0; i<n; i++){
+            if((i==0 || nums[i-1]<nums[i])&&(i == n-1 || nums[i]>nums[i+1]))
+            return i;
         }
-
-        // Return peak index
-        return low;
+        return -1;
     }
 }

@@ -1,7 +1,5 @@
 class Solution {
-
-    // Counts the number of subarrays needed if the maximum allowed sum is maxSum
-    private int countPartitions(int[] nums, int maxSum) {
+    public int countPartitions(int[] nums, int maxSum) {
         int partitions = 1;
         long subarraySum = 0;
 
@@ -18,10 +16,6 @@ class Solution {
 
     public int splitArray(int[] nums, int k) {
         int low = 0, high = 0;
-
-        // Search space:
-        // low = maximum element
-        // high = sum of all elements
         for (int num : nums) {
             low = Math.max(low, num);
             high += num;

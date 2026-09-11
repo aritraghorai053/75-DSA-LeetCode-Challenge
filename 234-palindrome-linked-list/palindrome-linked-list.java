@@ -10,23 +10,46 @@
  */
 class Solution {
     public boolean isPalindrome(ListNode head) {
-        Stack <Integer> st = new Stack <>();
-        ListNode temp = head;
 
-        while(temp != null){
-            st.push(temp.val);
-            temp = temp.next;
+        
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        temp = head;
 
-        while(temp != null){
-            if(temp.val != st.peek()){
+        
+        ListNode second = reverseLinkedList(slow.next);
+
+        
+        ListNode first = head;
+
+        while (second != null) {
+            if (first.val != second.val) {
                 return false;
             }
-            st.pop();
-            temp = temp.next;
+
+            first = first.next;
+            second = second.next;
         }
 
         return true;
+    }
+
+    
+    private ListNode reverseLinkedList(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+
+        while (curr != null) {
+            ListNode next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        return prev;
     }
 }

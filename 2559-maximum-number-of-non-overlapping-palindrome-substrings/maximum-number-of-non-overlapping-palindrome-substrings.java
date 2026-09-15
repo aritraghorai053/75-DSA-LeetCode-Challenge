@@ -1,44 +1,34 @@
 class Solution {
+
     public int maxPalindromes(String s, int k) {
         int n = s.length();
+        int ans = 0,
+            start = 0;
 
-        // pal[i][j] = true if s[i...j] is a palindrome
-        boolean[][] pal = new boolean[n][n];
+        for (int r = k - 1; r < n; ++r) {
+            int l = r - k + 1;
+            if (l >= start && check(s, l, r)) {
+                ++ans;
+                start = r + 1;
+                continue;
+            }
 
-        // Build palindrome table
-        for (int i = n - 1; i >= 0; i--) {
-            for (int j = i; j < n; j++) {
-
-                if (s.charAt(i) == s.charAt(j)) {
-                    if (j - i <= 1) {
-                        pal[i][j] = true;
-                    } else {
-                        pal[i][j] = pal[i + 1][j - 1];
-                    }
-                }
+            l = r - k;
+            if (l >= start && check(s, l, r)) {
+                ++ans;
+                start = r + 1;
             }
         }
 
-        // dp[i] = maximum palindromes from index i
-        int[] dp = new int[n + 1];
+        return ans;
+    }
 
-        for (int i = n - 1; i >= 0; i--) {
-
-            // Option 1: skip this character
-            dp[i] = dp[i + 1];
-
-            // Option 2: choose a palindrome starting at i
-            for (int j = i + k - 1; j < n; j++) {
-
-                if (pal[i][j]) {
-                    dp[i] = Math.max(
-                        dp[i],
-                        1 + dp[j + 1]
-                    );
-                }
+    private boolean check(String s, int l, int r) {
+        while (l < r) {
+            if (s.charAt(l++) != s.charAt(r--)) {
+                return false;
             }
         }
-
-        return dp[0];
+        return true;
     }
 }

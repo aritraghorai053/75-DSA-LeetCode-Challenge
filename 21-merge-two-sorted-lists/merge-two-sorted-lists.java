@@ -10,26 +10,29 @@
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        ArrayList<Integer>list = new ArrayList<>();
         ListNode temp1 = list1;
-        while(temp1 != null){
-            list.add (temp1.val);
-            temp1 = temp1.next;
-        }
         ListNode temp2 = list2;
-        while(temp2 != null){
-            list.add(temp2.val);
-            temp2 = temp2.next;
-        }
-
-        Collections.sort(list);
-
         ListNode dummy = new ListNode(-1);
         ListNode temp = dummy;
 
-        for(int value : list){
-            temp.next = new ListNode(value);
-            temp = temp.next;
+        while(temp1 != null && temp2 != null){
+            if(temp1.val < temp2.val){
+                temp.next = temp1;
+                temp = temp1;
+                temp1 = temp1.next;
+            }
+            else{
+                temp.next = temp2;
+                temp = temp2;
+                temp2 = temp2.next;
+            }
+        }
+
+        if(temp1 != null){
+            temp.next = temp1;
+        }
+        else{
+            temp.next = temp2;
         }
 
         return dummy.next;
